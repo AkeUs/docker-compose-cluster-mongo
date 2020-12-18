@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+
+  mongo01:
+    container_name: mongo01
+    image: mongo:4.2
+    hostname: mongo01
+    command: ["mongod", "--replSet", "rs0"]
+    networks: 
+      - net
+  
+  mongo02:
+    container_name: mongo02
+    image: mongo:4.2
+    hostname: mongo02
+    command: ["mongod", "--replSet", "rs0"]
+    networks: 
+      - net
+
+  mongo03:
+    container_name: mongo03
+    image: mongo:4.2
+    hostname: mongo03
+    command: ["mongod", "--replSet", "rs0"]
+    networks: 
+      - net
+
+  config:
+    container_name: config
+    image: mongo:4.2
+    hostname: config
+    networks: 
+      - net
+
+networks: 
+  net:
+    driver: bridge
+
